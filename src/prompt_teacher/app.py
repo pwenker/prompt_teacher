@@ -7,9 +7,9 @@ from prompt_teacher.metaprompts import metaprompts
 
 with gr.Blocks(title="Prompt Teacher", theme=gr.themes.Soft()) as gradio_app:
     gr.Markdown("### 🤖 Prompt Teacher 📝✨")
-    with gr.Accordion("ℹ️ Info: Code 📜 and Documentation 📚"):
+    with gr.Accordion("ℹ️ Info: Code 📜 and Documentation 📚", open=False):
         gr.Markdown(
-            "Can found at: [Github: pwenker/prompt_teacher](https://github.com/pwenker/prompt_teacher) 📄✨"
+            "Can be found at: [Github: pwenker/prompt_teacher](https://github.com/pwenker/prompt_teacher) 📄✨"
         )
     with gr.Row():
         with gr.Column(scale=2):
@@ -24,7 +24,7 @@ with gr.Blocks(title="Prompt Teacher", theme=gr.themes.Soft()) as gradio_app:
                 label="Prompt",
                 interactive=True,
                 placeholder="Type in your prompt",
-                value="Explain prompt engineering",
+                value="How to write a good prompt?",
                 show_copy_button=True,
             )
             with gr.Row():
