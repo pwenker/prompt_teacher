@@ -1,0 +1,30 @@
+[project]
+name = "prompt-teacher"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Pascal Wenker", email = "pwenker@posteo.de" }
+]
+dependencies = [
+    "gradio>=4.31.4",
+    "langchain>=0.2.0",
+    "langchain-openai>=0.1.7",
+    "langchain-anthropic>=0.1.13",
+    "pydantic-settings>=2.2.1",
+]
+readme = "README.md"
+requires-python = ">= 3.12"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/prompt_teacher"]

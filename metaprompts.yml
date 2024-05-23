@@ -1,0 +1,154 @@
+---
+Metaprompts:
+  - explanation: "Expands a prompt to include more detailed instructions and context."
+    example_prompt: "Tell me about dogs."
+    example_prompt_explanation: "This prompt is very vague and lacks context, making it ideal for expansion to guide the LLM more effectively."
+    name: "Expand with details"
+    template: |
+      Expand this prompt to include more detailed instructions and context:
+
+      {prompt}
+
+      Add necessary details and context to guide the LLM towards a more comprehensive and targeted response.
+  - explanation: "Refines a prompt according to best practices in prompt engineering for LLMs."
+    example_prompt: "Write a brief history of the internet."
+    example_prompt_explanation: "This prompt can be improved by specifying aspects such as the depth of detail, areas of focus, and desired structure."
+    name: "Apply prompt engineering best practices"
+    template: |
+      You are an expert Prompt Writer for Large Language Models.
+
+      Your goal is to improve the prompt given below:
+
+      Prompt: {prompt}
+
+      Here are several tips on writing great prompts:
+
+      - Start the prompt by stating that it is an expert in the subject.
+      - Put instructions at the beginning of the prompt and use ### or ``` to separate the instruction and context
+      - Be specific, descriptive and as detailed as possible about the desired context, outcome, length, format, style, etc
+
+      Here's an example of a great prompt:
+
+      As an expert in theoretical physics, provide a comprehensive explanation of the theory of relativity.
+
+      ### Instructions:
+      - Begin with a brief introduction to the historical context and the significance of the theory.
+      - Clearly differentiate between the Special Theory of Relativity and the General Theory of Relativity.
+      - Explain the key concepts of each theory, including the principle of relativity, the constancy of the speed of light, time dilation, length contraction, and the equivalence principle.
+      - Use diagrams or thought experiments, such as the famous "twin paradox" and "Einstein's elevator", to illustrate complex ideas.
+      - Discuss the implications of relativity in modern physics and its application in technologies like GPS.
+      - Conclude with a summary of how relativity has influenced our understanding of the universe.
+      - Aim for a detailed yet accessible explanation suitable for readers with a basic understanding of physics, approximately 1500 words in length.
+
+      Example:
+
+      """
+      Comprehensive Explanation of the Theory of Relativity
+
+      Introduction:
+      The theory of relativity, developed primarily by Albert Einstein in the early 20th century, revolutionized our understanding of space, time, and gravity. It consists of two parts: the Special Theory of Relativity and the General Theory of Relativity. This theory has not only expanded the realm of physics but also has practical applications in various technologies today.
+
+      Special Theory of Relativity:
+      Introduced in 1905, the Special Theory of Relativity addresses the physics of objects in uniform motion relative to each other. It is grounded on two postulates: the laws of physics are the same in all inertial frames, and the speed of light in a vacuum is constant, regardless of the observer's motion. Key phenomena explained by this theory include time dilation and length contraction, which illustrate how measurements of time and space vary for observers in different inertial frames.
+
+      General Theory of Relativity:
+      Einstein's General Theory of Relativity, published in 1915, extends the principles of the Special Theory to include acceleration and gravitation. It posits that massive objects cause a distortion in space-time, which is felt as gravity. This theory is best illustrated by the equivalence principle, which suggests that the effects of gravity are indistinguishable from the effects of acceleration.
+
+      Applications and Implications:
+      Relativity is not just a theoretical framework; it has practical applications. For instance, the operation of the Global Positioning System (GPS) relies on adjustments made for the effects predicted by relativity to ensure accuracy. Furthermore, relativity has paved the way for modern cosmological theories and has been crucial in our understanding of black holes and the expansion of the universe.
+
+      Conclusion:
+      The theory of relativity has fundamentally altered our conception of the universe. Its development marked a major shift from classical physics and continues to influence many aspects of modern science and technology.
+      """
+
+      Now, improve the prompt.
+
+      IMPROVED PROMPT:
+  - explanation: "Improves a prompt based on specific feedback provided."
+    example_prompt: "Describe the process of photosynthesis."
+    example_prompt_explanation: "Feedback might suggest making the prompt more accessible for younger audiences or more detailed for academic use."
+    name: "Apply feedback"
+    template: |
+      Improve the following prompt:
+
+      {prompt}
+
+      given this feedback:
+
+      {feedback}
+  - explanation: "Adapts a prompt to suit different audiences by modifying language, tone, and technical level."
+    example_prompt: "Explain the theory of relativity."
+    example_prompt_explanation: "The prompt can be adapted for different educational levels or non-specialist audiences."
+    name: "Adapt for different audience"
+    template: |
+      Adapt the following prompt for the following audience: {audience}:
+
+      {prompt}
+
+      Modify the language, tone, and technical level to suit the needs and understanding of {audience}.
+  - explanation: "Condenses a prompt to make it more succinct while retaining its essential request."
+    example_prompt: "Write a funny joke that makes people laugh about something very funny. It should be hilarious."
+    example_prompt_explanation: "This prompt can be condensed by removing redundant information"
+    name: "Simply condense prompt"
+    template: |
+      Condense this prompt:
+
+      {prompt}
+  - explanation: "Improves a prompt to enhance clarity and effectiveness."
+    example_prompt: "Tell me how to cook rice."
+    example_prompt_explanation: "This prompt can be improved by specifying the type of cuisine or cooking method."
+    name: "Simply improve prompt"
+    template: |
+      Improve this prompt:
+
+      {prompt}
+  - explanation: "Structures a prompt to guide the LLM through a series of sequential tasks."
+    example_prompt: "Plan a birthday party."
+    example_prompt_explanation: "This prompt can be structured to outline steps such as choosing a theme, preparing a guest list, and organizing activities."
+    name: "Create sequential task list"
+    template: |
+      Structure this prompt to guide the LLM through a series of sequential tasks:
+
+      {prompt}
+
+      Organize the prompt so that it clearly outlines each step the LLM should take, ensuring a logical flow and comprehensive coverage of the tasks.
+  - explanation: "Transforms a prompt to inspire creativity and elicit imaginative responses."
+    example_prompt: "Write a story about a lost kitten."
+    example_prompt_explanation: "The prompt can be revised to encourage more descriptive or emotional storytelling."
+    name: "Elicit creative response"
+    template: |
+      Transform this prompt to elicit a creative response:
+
+      {prompt}
+  - explanation: "Tailors a prompt to include a specific hypothetical scenario for detailed exploration."
+    example_prompt: "The danger of Artificial General Intelligence"
+    example_prompt_explanation: "This prompt can be tailored to explore specific hypothetical scenarios to provide depth and context."
+    name: "Include hypothetical scenario"
+    template: |
+      Tailor this prompt to include a specific hypothetical scenario:
+
+      {prompt}
+
+      Add a detailed scenario that helps explore the topic in depth, providing context and specifics to guide the response.
+  - explanation: "Reframes a prompt to focus on ethical considerations or moral dilemmas."
+    example_prompt: "Genetic engineering in humans."
+    example_prompt_explanation: "This prompt can be reframed to focus on the ethical considerations or moral dilemmas involved."
+    name: "Focus on ethics"
+    template: |
+      Reframe this prompt to focus on ethical considerations or moral dilemmas:
+
+      {prompt}
+
+      Modify the prompt to emphasize ethical debates, moral questions, and the implications of the topic. Revise the prompt to inspire creativity, using techniques suchas open-ended questions or imaginative scenarios.
+
+      Improved prompt:
+  - explanation: "Adds a role to the prompt to improve the response"
+    example_prompt: "Write a short song"
+    example_prompt_explanation: "By adding an expert role, we can potentialy improve the quality of the created song"
+    name: "Add role prompting"
+    template: |
+      Add expert role prompting to the following prompt
+
+      {prompt}
+
+      Improved prompt:
