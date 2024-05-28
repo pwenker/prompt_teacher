@@ -10,60 +10,6 @@ Metaprompts:
       {prompt}
 
       Add necessary details and context to guide the LLM towards a more comprehensive and targeted response.
-  - explanation: "Refines a prompt according to best practices in prompt engineering for LLMs."
-    example_prompt: "Write a brief history of the internet."
-    example_prompt_explanation: "This prompt can be improved by specifying aspects such as the depth of detail, areas of focus, and desired structure."
-    name: "Apply prompt engineering best practices"
-    template: |
-      You are an expert Prompt Writer for Large Language Models.
-
-      Your goal is to improve the prompt given below:
-
-      Prompt: {prompt}
-
-      Here are several tips on writing great prompts:
-
-      - Start the prompt by stating that it is an expert in the subject.
-      - Put instructions at the beginning of the prompt and use ### or ``` to separate the instruction and context
-      - Be specific, descriptive and as detailed as possible about the desired context, outcome, length, format, style, etc
-
-      Here's an example of a great prompt:
-
-      As an expert in theoretical physics, provide a comprehensive explanation of the theory of relativity.
-
-      ### Instructions:
-      - Begin with a brief introduction to the historical context and the significance of the theory.
-      - Clearly differentiate between the Special Theory of Relativity and the General Theory of Relativity.
-      - Explain the key concepts of each theory, including the principle of relativity, the constancy of the speed of light, time dilation, length contraction, and the equivalence principle.
-      - Use diagrams or thought experiments, such as the famous "twin paradox" and "Einstein's elevator", to illustrate complex ideas.
-      - Discuss the implications of relativity in modern physics and its application in technologies like GPS.
-      - Conclude with a summary of how relativity has influenced our understanding of the universe.
-      - Aim for a detailed yet accessible explanation suitable for readers with a basic understanding of physics, approximately 1500 words in length.
-
-      Example:
-
-      """
-      Comprehensive Explanation of the Theory of Relativity
-
-      Introduction:
-      The theory of relativity, developed primarily by Albert Einstein in the early 20th century, revolutionized our understanding of space, time, and gravity. It consists of two parts: the Special Theory of Relativity and the General Theory of Relativity. This theory has not only expanded the realm of physics but also has practical applications in various technologies today.
-
-      Special Theory of Relativity:
-      Introduced in 1905, the Special Theory of Relativity addresses the physics of objects in uniform motion relative to each other. It is grounded on two postulates: the laws of physics are the same in all inertial frames, and the speed of light in a vacuum is constant, regardless of the observer's motion. Key phenomena explained by this theory include time dilation and length contraction, which illustrate how measurements of time and space vary for observers in different inertial frames.
-
-      General Theory of Relativity:
-      Einstein's General Theory of Relativity, published in 1915, extends the principles of the Special Theory to include acceleration and gravitation. It posits that massive objects cause a distortion in space-time, which is felt as gravity. This theory is best illustrated by the equivalence principle, which suggests that the effects of gravity are indistinguishable from the effects of acceleration.
-
-      Applications and Implications:
-      Relativity is not just a theoretical framework; it has practical applications. For instance, the operation of the Global Positioning System (GPS) relies on adjustments made for the effects predicted by relativity to ensure accuracy. Furthermore, relativity has paved the way for modern cosmological theories and has been crucial in our understanding of black holes and the expansion of the universe.
-
-      Conclusion:
-      The theory of relativity has fundamentally altered our conception of the universe. Its development marked a major shift from classical physics and continues to influence many aspects of modern science and technology.
-      """
-
-      Now, improve the prompt.
-
-      IMPROVED PROMPT:
   - explanation: "Improves a prompt based on specific feedback provided."
     example_prompt: "Describe the process of photosynthesis."
     example_prompt_explanation: "Feedback might suggest making the prompt more accessible for younger audiences or more detailed for academic use."
@@ -76,16 +22,6 @@ Metaprompts:
       given this feedback:
 
       {feedback}
-  - explanation: "Adapts a prompt to suit different audiences by modifying language, tone, and technical level."
-    example_prompt: "Explain the theory of relativity."
-    example_prompt_explanation: "The prompt can be adapted for different educational levels or non-specialist audiences."
-    name: "Adapt for different audience"
-    template: |
-      Adapt the following prompt for the following audience: {audience}:
-
-      {prompt}
-
-      Modify the language, tone, and technical level to suit the needs and understanding of {audience}.
   - explanation: "Condenses a prompt to make it more succinct while retaining its essential request."
     example_prompt: "Write a funny joke that makes people laugh about something very funny. It should be hilarious."
     example_prompt_explanation: "This prompt can be condensed by removing redundant information"
@@ -152,3 +88,58 @@ Metaprompts:
       {prompt}
 
       Improved prompt:
+  - explanation: "Adds clear delimiters to a prompt to separate and organize different sections or instructions, enhancing readability and structure."
+    example_prompt: "Summarize this text {text} with bulletpoints. Be concise"
+    example_prompt_explanation: "This prompt can benefit from clear delimiters to separate instructions or sections, making it easier for the LLM to follow and respond systematically."
+    name: "Add delimiters for clarity"
+    template: |
+      Add delimiters (e.g. section titles, bullet points, or triple quotation marks) to this prompt to clearly separate and organize different sections or instructions and thereby enhance its structure and readability:
+
+      {prompt}
+  - explanation: "Incorporates chain of thought reasoning to guide the LLM through a logical sequence of thoughts for complex problem-solving."
+    example_prompt: "How can we reduce traffic congestion in urban areas?"
+    example_prompt_explanation: "This prompt can benefit from chain of thought reasoning to break down the problem into manageable parts and explore various solutions systematically."
+    name: "Incorporate chain of thought reasoning"
+    template: |
+      Incorporate chain of thought reasoning into the following prompt:
+
+      {prompt}
+
+      Break down the problem into a logical sequence of thoughts, exploring each aspect step by step to guide the LLM towards a comprehensive solution.
+  - explanation: This metaprompt integrates various techniques to refine, expand, and adapt prompts for LLMs, ensuring clarity, specificity, and engagement tailored to the intended purpose.
+    example_prompt: "Write a brief history of Artificial Intelligence"
+    example_prompt_explanation: "This prompt can be improved by specifying aspects such as the depth of detail, areas of focus, and desired structure."
+    name: Comprehensive prompt refinement
+    template: |
+      Your goal is to enhance the prompt given below by applying best practices in prompt engineering, including expansion for detail, adaptation for specific audiences, incorporation of feedback, and structuring for clarity and engagement.
+
+      ### Original Prompt:
+      {prompt}
+
+      ### Improvement Strategies:
+      1. **Specify the Expertise**: Clearly state if the prompt should be answered by an expert in a specific field.
+      2. **Add Detailed Instructions**: Include comprehensive instructions at the beginning of the prompt. Use markdown like `###` or triple backticks ``` to separate instruction and context.
+      3. **Expand for Detail**: Add necessary details and context to guide the LLM towards a more comprehensive and targeted response.
+      4. **Structure Sequentially**: If applicable, organize the prompt to guide the LLM through a series of sequential tasks or thought processes.
+      5. **Elicit Creativity**: If the prompt is creative, encourage imaginative and engaging responses.
+      6. **Include Hypothetical Scenarios**: For topics that benefit from depth, add specific scenarios that the LLM can explore.
+      7. **Focus on Ethics**: If relevant, reframe the prompt to emphasize ethical considerations or moral dilemmas.
+      8. **Add Role Prompting**: Introduce a role (e.g., an expert or a specific character) to potentially enhance the quality and relevance of the response.
+      9. **Add Delimiters for Clarity**: Use clear delimiters to organize different sections or instructions, enhancing readability and structure.
+      10. **Incorporate Chain of Thought Reasoning**: For complex problems, break down the issue into a logical sequence of thoughts to guide the LLM systematically.
+
+      ### Example of an Improved Prompt:
+      ```
+      As an expert in environmental science, provide a detailed analysis of the impact of climate change on global agriculture.
+
+      ### Instructions:
+      - Begin with an overview of the current scientific consensus on climate change.
+      - Discuss the specific ways in which changing climates are affecting agricultural practices worldwide.
+      - Include case studies or examples from different continents.
+      - Analyze potential future trends and suggest sustainable agricultural practices.
+      - Conclude with recommendations for policymakers.
+      - Target this explanation to an audience with a basic understanding of environmental science, aiming for about 2000 words.
+      ```
+
+      ### Improved Prompt:
+      ```

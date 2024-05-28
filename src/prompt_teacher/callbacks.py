@@ -9,6 +9,7 @@ from langchain_core.pydantic_v1 import ValidationError
 from langchain_openai import ChatOpenAI
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from prompt_teacher.messages import system_message
 from prompt_teacher.metaprompts import metaprompts_dict
 
 
@@ -26,7 +27,7 @@ def get_llm(
     api_key: str = settings.openai_api_key,
     structured_output=None,
 ):
-    if model_name in ["gpt-4-turbo"]:
+    if model_name in ["gpt-4-turbo", "gpt-4o"]:
         llm = ChatOpenAI(
             model=model_name,
             api_key=settings.openai_api_key if not api_key else api_key,
@@ -55,16 +56,14 @@ def explain_metaprompt(explanation_history, metaprompt):
         yield explanation_history
 
 
-def update_widgets(metaprompt):
+def update_widgets(metaprompt, feedback):
     button_variant = "primary" if metaprompt else "secondary"
     feedback_visibility = True if metaprompt == "Apply feedback" else False
-    audience_visibility = (
-        True if metaprompt == "Adapt for different audience" else False
-    )
     return [
         gr.Button(variant=button_variant),
-        gr.Textbox(visible=feedback_visibility),
-        gr.Textbox(visible=audience_visibility),
+        gr.Textbox(
+            visible=feedback_visibility, value=feedback if feedback_visibility else ""
+        ),
     ]
 
 
@@ -84,10 +83,14 @@ def explain_improvement(
     ---
     {improved_prompt}
     ---
-    Concisely explain the improvement
+    Concisely explain the improvement.
     """
-    prompt_template = ChatPromptTemplate.from_template(
-        prompt_template,
+
+    prompt_template = ChatPromptTemplate.from_messages(
+        [
+            ("system", system_message),
+            ("human", prompt_template),
+        ]
     )
     llm = get_llm(model_name, api_key)
     parser = StrOutputParser()
@@ -112,13 +115,15 @@ def improve_prompt(
     prompt: str,
     metaprompt: str,
     feedback: str | None,
-    audience: str | None,
     explanation_history,
 ) -> Generator[Tuple[str, str], Any, Any]:
     metaprompt_template = metaprompts_dict[metaprompt].template
 
-    prompt_template = ChatPromptTemplate.from_template(
-        metaprompt_template,
+    prompt_template = ChatPromptTemplate.from_messages(
+        [
+            ("system", system_message),
+            ("human", metaprompt_template),
+        ]
     )
     parser = StrOutputParser()
     llm = get_llm(model_name, api_key)
@@ -138,14 +143,7 @@ def improve_prompt(
 
     improved_prompt = ""
 
-    ## Modify the input so that audience is also included
-    input = (
-        {"prompt": prompt, "feedback": feedback}
-        if feedback
-        else {"prompt": prompt, "audience": audience}
-        if audience
-        else {"prompt": prompt}
-    )
+    input = {"prompt": prompt, "feedback": feedback} if feedback else {"prompt": prompt}
 
     for response in llm_chain.stream(input):
         explanation_history[-1][1] += response
@@ -154,7 +152,7 @@ def improve_prompt(
 
 
 def robustly_improve_prompt(*args, **kwargs):
-    history = args[6]
+    history = args[5]
     user_txt = "Oh no, there is an error!💥 What should I do?"
     try:
         yield from improve_prompt(*args, **kwargs)

@@ -7,7 +7,7 @@ from prompt_teacher.metaprompts import metaprompts
 
 with gr.Blocks(title="Prompt Teacher", theme=gr.themes.Soft()) as gradio_app:
     gr.Markdown("### 🤖 Prompt Teacher 📝✨")
-    with gr.Accordion("ℹ️ Info: Code 📜 and Documentation 📚", open=False):
+    with gr.Accordion("ℹ️ Info: Code 📜 and Documentation 📚", open=True):
         gr.Markdown(
             "Can be found at: [Github: pwenker/prompt_teacher](https://github.com/pwenker/prompt_teacher) 📄✨"
         )
@@ -45,10 +45,11 @@ with gr.Blocks(title="Prompt Teacher", theme=gr.themes.Soft()) as gradio_app:
                 label="Large Language Model",
                 info="Select Large Language Model",
                 choices=[
+                    ("gpt-4o", "gpt-4o"),
                     ("gpt-4-turbo", "gpt-4-turbo"),
                     ("claude-3-opus", "claude-3-opus-20240229"),
                 ],
-                value="gpt-4-turbo",
+                value="gpt-4o",
             )
             api_key = gr.Textbox(
                 placeholder="Paste in your API key (sk-...)",
@@ -60,17 +61,12 @@ with gr.Blocks(title="Prompt Teacher", theme=gr.themes.Soft()) as gradio_app:
             metaprompt = gr.Radio(
                 label="Improvements",
                 info="Select how the prompt should be improved",
-                value="Apply prompt engineering best practices",
+                value="Comprehensive prompt refinement",
                 choices=[mp.name.replace("_", " ").capitalize() for mp in metaprompts],
             )
             feedback = gr.Textbox(
                 label="Feedback",
                 info="Write your own feedback to be used to improve the prompt",
-                visible=False,
-            )
-            audience = gr.Textbox(
-                label="Audience",
-                info="Select the audience for the prompt",
                 visible=False,
             )
 
@@ -83,8 +79,8 @@ with gr.Blocks(title="Prompt Teacher", theme=gr.themes.Soft()) as gradio_app:
 
     metaprompt.change(
         fn=update_widgets,
-        inputs=[metaprompt],
-        outputs=[improve_btn, feedback, audience],
+        inputs=[metaprompt, feedback],
+        outputs=[improve_btn, feedback],
     ).success(
         lambda: [gr.Button(visible=False), gr.Button(visible=False)],
         None,
@@ -102,7 +98,6 @@ with gr.Blocks(title="Prompt Teacher", theme=gr.themes.Soft()) as gradio_app:
             prompt,
             metaprompt,
             feedback,
-            audience,
             prompt_teacher,
         ],
         outputs=[improved_prompt, prompt_teacher],
@@ -132,4 +127,4 @@ with gr.Blocks(title="Prompt Teacher", theme=gr.themes.Soft()) as gradio_app:
     )
 
 if __name__ == "__main__":
-    gradio_app.launch(favicon_path="robot.svg")
+    gradio_app.queue(default_concurrency_limit=10).launch(favicon_path="robot.svg")

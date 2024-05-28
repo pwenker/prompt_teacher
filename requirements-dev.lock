@@ -43,8 +43,6 @@ contourpy==1.2.1
     # via matplotlib
 cycler==0.12.1
     # via matplotlib
-dataclasses-json==0.6.6
-    # via langchain
 defusedxml==0.7.1
     # via langchain-anthropic
 distro==1.9.0
@@ -118,7 +116,7 @@ jsonschema-specifications==2023.12.1
     # via jsonschema
 kiwisolver==1.4.5
     # via matplotlib
-langchain==0.2.0
+langchain==0.2.1
     # via prompt-teacher
 langchain-anthropic==0.1.13
     # via prompt-teacher
@@ -139,8 +137,6 @@ markdown-it-py==3.0.0
 markupsafe==2.1.5
     # via gradio
     # via jinja2
-marshmallow==3.21.2
-    # via dataclasses-json
 matplotlib==3.9.0
     # via gradio
 mdurl==0.1.2
@@ -148,8 +144,6 @@ mdurl==0.1.2
 multidict==6.0.5
     # via aiohttp
     # via yarl
-mypy-extensions==1.0.0
-    # via typing-inspect
 numpy==1.26.4
     # via altair
     # via contourpy
@@ -169,7 +163,6 @@ packaging==23.2
     # via gradio-client
     # via huggingface-hub
     # via langchain-core
-    # via marshmallow
     # via matplotlib
 pandas==2.2.2
     # via altair
@@ -273,9 +266,6 @@ typing-extensions==4.11.0
     # via pydantic-core
     # via sqlalchemy
     # via typer
-    # via typing-inspect
-typing-inspect==0.9.0
-    # via dataclasses-json
 tzdata==2024.1
     # via pandas
 ujson==5.10.0
