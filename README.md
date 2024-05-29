@@ -1,6 +1,6 @@
 # 🤖 Prompt Teacher 📝✨
 
-The **prompt teacher** is an interactive and educational prompt engineering interface for LLMs that teaches users how to craft ✍️, refine 🔧, and optimize 📈 prompts to achieve the most effective and targeted responses from LLMs.
+> The **prompt teacher** is an interactive and educational prompt engineering interface for LLMs that teaches users how to craft ✍️, refine 🔧, and optimize 📈 prompts to achieve the most effective and targeted responses from LLMs.
 
 <img src="thumbnail.png" alt="Screenshot of the Prompt Teacher"/>
 
